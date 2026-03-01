@@ -22,8 +22,7 @@ CREATE TABLE students (
     department VARCHAR(100) NOT NULL,
     cgpa DECIMAL(3,2) CHECK (cgpa BETWEEN 0 AND 10),
     phone VARCHAR(15),
-    resume_path VARCHAR(255),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    resume_path VARCHAR(255)
 );
 
 -- =====================================================
@@ -37,8 +36,7 @@ CREATE TABLE companies (
     password_hash VARCHAR(255) NOT NULL,
     location VARCHAR(150),
     website VARCHAR(255),
-    description TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    description TEXT
 );
 
 -- =====================================================
@@ -49,8 +47,7 @@ CREATE TABLE admins (
     admin_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
-    password_hash VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    password_hash VARCHAR(255) NOT NULL
 );
 
 -- =====================================================
@@ -66,8 +63,7 @@ CREATE TABLE jobs (
     salary DECIMAL(10,2),
     eligibility_cgpa DECIMAL(3,2) CHECK (eligibility_cgpa BETWEEN 0 AND 10),
     job_type ENUM('Full-Time', 'Part-Time', 'Internship') DEFAULT 'Full-Time',
-    deadline DATE NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    deadline DATE NOT NULL
 
     CONSTRAINT fk_company_job
         FOREIGN KEY (company_id)
@@ -88,8 +84,7 @@ CREATE TABLE applications (
     student_id INT NOT NULL,
     job_id INT NOT NULL,
     applied_date DATE DEFAULT CURRENT_DATE,
-    status ENUM('Pending', 'Selected', 'Rejected') DEFAULT 'Pending',
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    status ENUM('Pending', 'Selected', 'Rejected') DEFAULT 'Pending'
 
     CONSTRAINT fk_application_student
         FOREIGN KEY (student_id)
@@ -113,3 +108,4 @@ CREATE INDEX idx_application_job ON applications(job_id);
 -- =====================================================
 -- END OF SCHEMA
 -- =====================================================
+
