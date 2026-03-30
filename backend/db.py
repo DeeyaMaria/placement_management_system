@@ -4,7 +4,7 @@ from mysql.connector import Error
 DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',          # change to your MySQL username
-    'password': 'Galaxy18@',          # change to your MySQL password
+    'password': '',          # change to your MySQL password
     'database': 'placement_management'
 }
 
